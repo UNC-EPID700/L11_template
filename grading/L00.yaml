@@ -1,0 +1,18 @@
+assignment: L04
+
+tests:
+- name: Weight
+  points: 25
+  command: pytest grading/test_exact_output.py --answer_path=[https://raw.githubusercontent.com/mwklose/F2024-answer-keys/main/L04/l04_stats_weight.sas7bdat_encrypted] --files=[l04_stats]
+
+- name: MomAge
+  points: 25
+  command: pytest grading/test_exact_output.py --answer_path=[https://raw.githubusercontent.com/mwklose/F2024-answer-keys/main/L04/l04_stats_age.sas7bdat_encrypted] --files=[l04_stats]
+
+- name: MomWtGain
+  points: 25
+  command: pytest grading/test_exact_output.py --answer_path=[https://raw.githubusercontent.com/mwklose/F2024-answer-keys/main/L04/l04_stats_wt_gain.sas7bdat_encrypted] --files=[l04_stats]
+
+- name: OUTPUT
+  points: 25
+  command: pytest grading/test_exact_output.py --answer_path=[https://raw.githubusercontent.com/mwklose/F2024-answer-keys/main/L04/l04_stats.sas7bdat_encrypted] --files=[l04_stats]

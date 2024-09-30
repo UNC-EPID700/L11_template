@@ -1,0 +1,31 @@
+name: L00 Autograding Tests
+
+on:
+- push
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: changed-readme
+      id: changed-readme
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: changed-readme
+        setup-command: sudo -H pip install --quiet pytest pandas pyyaml
+        command: pytest grading/test_readme.py --no-header -rfs
+        timeout: 10
+        max-score: 100
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        CHANGED-README_RESULTS: ${{ steps.changed-readme.outputs.result }}
+      with:
+        runners: changed-readme
