@@ -1,8 +1,6 @@
-name: L00 Autograding Tests
-
-on:
+name: L11 Autograding Tests
+'on':
 - push
-
 permissions:
   checks: write
   actions: read
@@ -14,18 +12,96 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: changed-readme
-      id: changed-readme
+    - name: heart_5y
+      id: heart_5y
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: changed-readme
+        test-name: heart_5y
         setup-command: sudo -H pip install --quiet pytest pandas pyyaml
-        command: pytest grading/test_readme.py --no-header -rfs
+        command: pytest grading/test_exact_output.py --answer_path=[https://raw.githubusercontent.com/mwklose/F2024-answer-keys/main/L11/heart_5y.sas7bdat_encrypted]
+          --files=[heart_5y] --no-header -rfs
         timeout: 10
-        max-score: 100
+        max-score: 10
+    - name: heart_10y
+      id: heart_10y
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: heart_10y
+        setup-command: sudo -H pip install --quiet pytest pandas pyyaml
+        command: pytest grading/test_exact_output.py --answer_path=[https://raw.githubusercontent.com/mwklose/F2024-answer-keys/main/L11/heart_10y.sas7bdat_encrypted]
+          --files=[heart_10y] --no-header -rfs
+        timeout: 10
+        max-score: 10
+    - name: heart_15y
+      id: heart_15y
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: heart_15y
+        setup-command: sudo -H pip install --quiet pytest pandas pyyaml
+        command: pytest grading/test_exact_output.py --answer_path=[https://raw.githubusercontent.com/mwklose/F2024-answer-keys/main/L11/heart_15y.sas7bdat_encrypted]
+          --files=[heart_15y] --no-header -rfs
+        timeout: 10
+        max-score: 10
+    - name: heart_20y
+      id: heart_20y
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: heart_20y
+        setup-command: sudo -H pip install --quiet pytest pandas pyyaml
+        command: pytest grading/test_exact_output.py --answer_path=[https://raw.githubusercontent.com/mwklose/F2024-answer-keys/main/L11/heart_20y.sas7bdat_encrypted]
+          --files=[heart_20y] --no-header -rfs
+        timeout: 10
+        max-score: 10
+    - name: heart_25y
+      id: heart_25y
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: heart_25y
+        setup-command: sudo -H pip install --quiet pytest pandas pyyaml
+        command: pytest grading/test_exact_output.py --answer_path=[https://raw.githubusercontent.com/mwklose/F2024-answer-keys/main/L11/heart_25y.sas7bdat_encrypted]
+          --files=[heart_25y] --no-header -rfs
+        timeout: 10
+        max-score: 10
+    - name: heart_30y
+      id: heart_30y
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: heart_30y
+        setup-command: sudo -H pip install --quiet pytest pandas pyyaml
+        command: pytest grading/test_exact_output.py --answer_path=[https://raw.githubusercontent.com/mwklose/F2024-answer-keys/main/L11/heart_30y.sas7bdat_encrypted]
+          --files=[heart_30y] --no-header -rfs
+        timeout: 10
+        max-score: 10
+    - name: heart_Ny
+      id: heart_ny
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: heart_Ny
+        setup-command: sudo -H pip install --quiet pytest pandas pyyaml
+        command: pytest grading/test_regex.py --files=[code/L11.sas] --regex='DATA
+          .*\.?heart_&years\.?\s*;' --no-header -rfs
+        timeout: 10
+        max-score: 20
+    - name: risk_Ny
+      id: risk_ny
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: risk_Ny
+        setup-command: sudo -H pip install --quiet pytest pandas pyyaml
+        command: pytest grading/test_regex.py --files=[code/L11.sas] --regex='risk_&years\.?'
+          --no-header -rfs
+        timeout: 10
+        max-score: 20
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        CHANGED-README_RESULTS: ${{ steps.changed-readme.outputs.result }}
+        HEART_5Y_RESULTS: ${{ steps.heart_5y.outputs.result }}
+        HEART_10Y_RESULTS: ${{ steps.heart_10y.outputs.result }}
+        HEART_15Y_RESULTS: ${{ steps.heart_15y.outputs.result }}
+        HEART_20Y_RESULTS: ${{ steps.heart_20y.outputs.result }}
+        HEART_25Y_RESULTS: ${{ steps.heart_25y.outputs.result }}
+        HEART_30Y_RESULTS: ${{ steps.heart_30y.outputs.result }}
+        HEART_NY_RESULTS: ${{ steps.heart_ny.outputs.result }}
+        RISK_NY_RESULTS: ${{ steps.risk_ny.outputs.result }}
       with:
-        runners: changed-readme
+        runners: heart_5y,heart_10y,heart_15y,heart_20y,heart_25y,heart_30y,heart_ny,risk_ny
