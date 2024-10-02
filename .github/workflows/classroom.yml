@@ -79,7 +79,7 @@ jobs:
         test-name: heart_Ny
         setup-command: sudo -H pip install --quiet pytest pandas pyyaml
         command: pytest grading/test_regex.py --files=[code/L11.sas] --regex='DATA
-          .*\.?heart_&years\.?\s*;' --no-header -rfs
+          .*\.?heart_&years\.y\s*;' --no-header -rfs
         timeout: 10
         max-score: 20
     - name: risk_Ny
@@ -88,7 +88,7 @@ jobs:
       with:
         test-name: risk_Ny
         setup-command: sudo -H pip install --quiet pytest pandas pyyaml
-        command: pytest grading/test_regex.py --files=[code/L11.sas] --regex='risk_&years\.?'
+        command: pytest grading/test_regex.py --files=[code/L11.sas] --regex='risk_&years\.y'
           --no-header -rfs
         timeout: 10
         max-score: 20

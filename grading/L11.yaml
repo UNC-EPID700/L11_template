@@ -27,8 +27,8 @@ tests:
 
 - name: heart_Ny
   points: 20
-  command: pytest grading/test_regex.py --files=[code/L11.sas] --regex='DATA .*\.?heart_&years\.?\s*;' 
+  command: pytest grading/test_regex.py --files=[code/L11.sas] --regex='DATA .*\.?heart_&years\.y\s*;' 
 
 - name: risk_Ny
   points: 20
-  command: pytest grading/test_regex.py --files=[code/L11.sas] --regex='risk_&years\.?' 
+  command: pytest grading/test_regex.py --files=[code/L11.sas] --regex='risk_&years\.y' 
